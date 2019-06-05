@@ -2,20 +2,20 @@ package application;
 
 import java.io.IOException;
 
-import game.BoardModel;
-import game.ModelPrinter;
+//import game.BoardModel;
+//import game.ModelPrinter;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Form.fxml"));
-			Scene scene = new Scene(root,400,400);
+			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("Form.fxml"));
+			Scene scene = new Scene(root,300,300);
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -25,8 +25,8 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) {
-//		launch(args);
-		BoardModel model = new BoardModel(10,10);//(列,行)=(x,y)
+		launch(args);
+/*		BoardModel model = new BoardModel(10,10);//(列,行)=(x,y)
 		model.addListener(new ModelPrinter());
 		model.changeCellState(1, 1);
 		model.changeCellState(2, 2);
@@ -44,6 +44,7 @@ public class Main extends Application {
 			model.undo();
 			model.fireUpdate();
 			}
-
+*/
 	}
+
 }
