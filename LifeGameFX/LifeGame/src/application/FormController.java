@@ -8,19 +8,58 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 
 public class FormController implements Initializable{
 	@FXML Canvas canvas;
+	@FXML private Button button_Next;
+	@FXML private Button button_Undo;
+	@FXML private Button button_NewGame;
     GraphicsContext gc;
     BoardModel model;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    	model = new BoardModel(10,10);//(列,行)=(x,y)
+    	model = new BoardModel(15,15);//(列,行)=(x,y)
         gc = canvas.getGraphicsContext2D();
         draw();
     }
+
+    @FXML
+    public void onNextClicked() {
+    	model.next();
+        draw();
+
+    }
+
+    @FXML
+    public void onUndoClicked() {
+    	model.undo();
+        draw();
+    }
+
+    @FXML
+    public void onNewGameClicked() {
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     void draw(){
         gc.setStroke(Color.RED);
