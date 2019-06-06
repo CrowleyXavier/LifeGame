@@ -44,6 +44,24 @@ public class BoardModel {
 		return rows;
 	}
 
+	public void NewGame() {
+		history.clear();
+
+		for(int r=0;r<rows;r++) {
+    		for(int c=0;c<cols;c++) {
+    			cells[r][c]=false;
+    		}
+    	}
+	}
+
+	public boolean CellState(int x,int y) {
+		if(cells[y][x]==true) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
 	public void printForDebug() {
 		for(int r = 0;r<rows;r++) {
 			for(int c = 0;c<cols;c++) {
@@ -61,6 +79,7 @@ public class BoardModel {
 	public void changeCellState(int x,int y) {
 		//(x,y)で指定されたセルの状態を変更する
 		cells[y][x]  = !cells[y][x];
+		System.out.println("cell[y][x]="+y+""+x);
 		fireUpdate();
 	}
 

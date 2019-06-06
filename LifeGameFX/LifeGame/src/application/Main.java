@@ -2,14 +2,14 @@ package application;
 
 import java.io.IOException;
 
-//import game.BoardModel;
-//import game.ModelPrinter;
+import game.BoardModel;
+import game.ModelPrinter;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
@@ -19,14 +19,21 @@ public class Main extends Application {
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
+
+			scene.setOnMouseClicked(this::mouseClicked);
+
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
 
+	private void mouseClicked(MouseEvent e) {
+		System.out.println("X="+e.getX()+"::Y"+e.getY());
+	}
+
 	public static void main(String[] args) {
 		launch(args);
-/*		BoardModel model = new BoardModel(10,10);//(列,行)=(x,y)
+		BoardModel model = new BoardModel(10,10);//(列,行)=(x,y)
 		model.addListener(new ModelPrinter());
 		model.changeCellState(1, 1);
 		model.changeCellState(2, 2);
@@ -44,7 +51,9 @@ public class Main extends Application {
 			model.undo();
 			model.fireUpdate();
 			}
-*/
+
+
+
 	}
 
 }
