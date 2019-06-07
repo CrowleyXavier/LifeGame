@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FormController">
+<BorderPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FormController">
     <center>
         <Canvas fx:id="canvas" height="213.0" width="200.0" />
     </center>
@@ -15,7 +15,9 @@
          <children>
             <Button fx:id="button_Next" mnemonicParsing="false" onAction="#onNextClicked" text="Next" />
             <Button fx:id="button_Undo" mnemonicParsing="false" onAction="#onUndoClicked" text="Undo" />
+            <Button fx:id="button_Auto" mnemonicParsing="false" onAction="#onAutoClicked" text="Auto" />
             <Button fx:id="button_NewGame" mnemonicParsing="false" onAction="#onNewGameClicked" text="New Game" />
+            <Button fx:id="button_NewGame" mnemonicParsing="false" onAction="#onStopClicked" text="Stop" />
          </children>
       </HBox>
    </bottom>

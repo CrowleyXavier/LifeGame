@@ -83,6 +83,10 @@ public class BoardModel {
 		fireUpdate();
 	}
 
+	public void trueCellState(int x, int y) {
+		cells[y][x]=true;
+	}
+
 	public void addListener(BoardListener listener) {
 		listeners.add(listener);
 	}
@@ -127,7 +131,7 @@ public class BoardModel {
 				if(count==3 && cells[r][c]==false) {//誕生条件:死んでいるセルの周囲8セルに3つ生きているセルがある
 					cells[r][c]= true;
 				//	psum++;
-					System.out.println(count);
+				//	System.out.println(count);
 					}//復活
 				if(count<2 || count>=4 ){//死亡条件：生きているセルの周囲8セルに生きているセルが1個以下または4個以上
 					if(cells[r][c]==true) {

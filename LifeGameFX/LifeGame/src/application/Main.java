@@ -2,12 +2,9 @@ package application;
 
 import java.io.IOException;
 
-import game.BoardModel;
-import game.ModelPrinter;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 public class Main extends Application {
@@ -18,42 +15,16 @@ public class Main extends Application {
 			Scene scene = new Scene(root,300,300);
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("Life Game");
 			primaryStage.show();
-
-			scene.setOnMouseClicked(this::mouseClicked);
 
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void mouseClicked(MouseEvent e) {
-		System.out.println("X="+e.getX()+"::Y"+e.getY());
-	}
 
 	public static void main(String[] args) {
 		launch(args);
-		BoardModel model = new BoardModel(10,10);//(列,行)=(x,y)
-		model.addListener(new ModelPrinter());
-		model.changeCellState(1, 1);
-		model.changeCellState(2, 2);
-		model.changeCellState(0, 3);
-		model.changeCellState(1, 3);
-		model.changeCellState(2, 3);
-		model.changeCellState(4, 4);
-		model.changeCellState(4, 4);
-
-		for(int i = 0;i<12;i++) {
-			model.next();
-		}
-
-		while(model.isUndoable()) {
-			model.undo();
-			model.fireUpdate();
-			}
-
-
-
 	}
-
 }

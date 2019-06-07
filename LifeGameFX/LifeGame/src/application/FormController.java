@@ -2,6 +2,7 @@ package application;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
 
 import game.BoardModel;
 import javafx.fxml.FXML;
@@ -16,6 +17,11 @@ public class FormController implements Initializable{
 	@FXML private Button button_Next;
 	@FXML private Button button_Undo;
 	@FXML private Button button_NewGame;
+	@FXML private Button button_Auto;
+	@FXML private Button button_Stop;
+
+	Timer timer = new Timer();
+	private boolean auto=false;
 	private int x;
 	private int y;
     GraphicsContext gc;
@@ -32,11 +38,7 @@ public class FormController implements Initializable{
         	x=(int)xtemp;
         	y=(int)ytemp;
         	System.out.println((x/10)*10);
-/*
-        	if(10<x&&x<20&&20<y&&y<30) {
-        		gc.fillRect(30, 20, 10, 10);
-        	}
-*/
+
         	for(int r=0;r<model.getRows();r++) {
         		for(int c=0;c<model.getCols();c++) {
         			if(10+10*c<x&&x<20+10*c&&20+10*r<y&&y<30+10*r) {
@@ -48,6 +50,28 @@ public class FormController implements Initializable{
         	draw();
         });
 
+        canvas.setOnMouseDragged(ev ->{
+        	double xtemp=ev.getSceneX()-50;
+        	double ytemp=ev.getSceneY();
+        	x=(int)xtemp;
+        	y=(int)ytemp;
+        //	System.out.println((x/10)*10);
+
+        	for(int r=0;r<model.getRows();r++) {
+        		for(int c=0;c<model.getCols();c++) {
+        			if(10+10*c<x&&x<20+10*c&&20+10*r<y&&y<30+10*r) {
+        				model.trueCellState(c, r);
+        			//	gc.fillRect((x/10)*10,(y/10)*10,10,10);
+        			}
+        		}
+        	}
+
+
+
+        	draw();
+        });
+
+
         draw();
     }
 
@@ -55,7 +79,6 @@ public class FormController implements Initializable{
     public void onNextClicked() {
     	model.next();
         draw();
-
     }
 
     @FXML
@@ -70,12 +93,42 @@ public class FormController implements Initializable{
     	draw();
     }
 
+    @FXML
+    public void onAutoClicked() {
+/*    	auto= !auto;
+
+    	if(timer==null) {
+        	Timer timer = new Timer();
+        	TimerTask task = new TimerTask() {
+        		public void run() {
+        		model.next();
+        		draw();
+        		}
+        	};
+    		System.out.println("call");
+		timer.scheduleAtFixedRate(task,0,500);
+    	}
+*/
+    }
+
+    public void onStopClicked() {
+/*
+
+    	if(timer!=null){
+    		timer.cancel();
+    		timer=null;
+    		System.out.println("cancel");
+    	}else {
+        	System.out.println("null");
+    	}
+    	*/
+    }
+
 
 
 
     void draw(){
         gc.setStroke(Color.RED);
-        //gc.strokeLine(50,100,350,200);
 
 		for(int c = 0;c<=model.getCols();c++) {//colsは列
 			gc.strokeLine(10+10*c,20,10+10*c,20+model.getRows()*10);//縦棒
@@ -93,12 +146,6 @@ public class FormController implements Initializable{
     			}else {
     				gc.setFill(Color.WHITE);
     				gc.fillRect(10.1+c*10,20.1+r*10,9.9,9.9);
-    			}
-
-
-    			if(10+10*c<x&&x<20+10*c&&20+10*r<y&&y<30+10*r) {
-
-
     			}
     		}
     	}
