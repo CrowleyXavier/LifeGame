@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import game.BoardModel;
 import javafx.fxml.FXML;
@@ -20,7 +21,7 @@ public class FormController implements Initializable{
 	@FXML private Button button_Auto;
 	@FXML private Button button_Stop;
 
-	Timer timer = new Timer();
+	Timer timer ;
 	private boolean auto=false;
 	private int x;
 	private int y;
@@ -95,10 +96,10 @@ public class FormController implements Initializable{
 
     @FXML
     public void onAutoClicked() {
-/*    	auto= !auto;
+   	auto= !auto;
 
     	if(timer==null) {
-        	Timer timer = new Timer();
+        	timer = new Timer();
         	TimerTask task = new TimerTask() {
         		public void run() {
         		model.next();
@@ -108,11 +109,11 @@ public class FormController implements Initializable{
     		System.out.println("call");
 		timer.scheduleAtFixedRate(task,0,500);
     	}
-*/
+
     }
 
     public void onStopClicked() {
-/*
+
 
     	if(timer!=null){
     		timer.cancel();
@@ -121,7 +122,7 @@ public class FormController implements Initializable{
     	}else {
         	System.out.println("null");
     	}
-    	*/
+    	
     }
 
 
