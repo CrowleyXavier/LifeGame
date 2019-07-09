@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+C:\Users\Ryoma Fushiki\Desktop\LifeGame\.metadata\.plugins\org.eclipse.jdt.core
+4127667372.index
+1062284684.index
