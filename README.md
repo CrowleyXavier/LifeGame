@@ -1,2 +1,2 @@
 # LifeGame
-LifeGame for JavaFX
+LifeGameをJavaFXで書いてみた
